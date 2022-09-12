@@ -4,7 +4,7 @@ created-on: 2022-09-12T02:26:22.270Z
 updated-on: 2022-09-12T02:26:22.281Z
 published-on: 2022-09-12T02:26:22.292Z
 f_main-project-image:
-  url: /assets/images/clip-4x-100.jpg
+  url: /assets/images/rozana-4x-50.jpg
 tags: project
 layout: "[project].html"
 date: 2022-09-12T02:26:22.298Z
