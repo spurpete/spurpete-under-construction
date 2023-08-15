@@ -3,6 +3,7 @@ backend:
   accept_roles:
     - admin
     - editor
+  branch: master
 media_folder: theme/assets/images
 public_folder: /assets/images
 collections:
@@ -79,9 +80,9 @@ collections:
             name: additional_tags
             widget: text
             required: false
-  - name: project
+  - name: projects
     label: Projects
-    folder: cms/project
+    folder: cms/projects
     create: true
     identifier_field: name
     extension: md
@@ -107,18 +108,9 @@ collections:
         label: Published On
         widget: datetime
         required: false
-      - label: Project Details
-        name: body
-        widget: markdown
-        required: false
       - hint: ''
-        name: f_project-summary
-        label: Project Summary
-        widget: text
-        required: false
-      - hint: Used on project list grid
-        name: f_main-project-image
-        label: Main Project Image
+        name: f_featured-image
+        label: Featured image
         widget: object
         required: false
         fields:
@@ -134,13 +126,75 @@ collections:
             widget: string
             required: false
       - hint: ''
-        name: f_client
-        label: Client
+        name: f_card-image
+        label: Card image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_live-link
+        label: Live link
         widget: string
         required: false
       - hint: ''
-        name: f_client-logo
-        label: Client Logo
+        name: f_service-type
+        label: Service type
+        widget: string
+        required: false
+      - hint: Description of what you did
+        name: f_short-description
+        label: Short description
+        widget: string
+        required: false
+      - hint: ''
+        name: f_overview-headline-long
+        label: Overview headline (Long)
+        widget: string
+        required: false
+      - hint: ''
+        name: f_overview-body
+        label: Overview body
+        widget: text
+        required: false
+      - hint: ''
+        name: f_client-name-company
+        label: Client name (Company)
+        widget: string
+        required: false
+      - hint: ''
+        name: f_date-completed
+        label: Date completed
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_your-role-in-the-project
+        label: Your role in the project
+        widget: string
+        required: false
+      - hint: ''
+        name: f_client-quote
+        label: Client quote
+        widget: string
+        required: false
+      - hint: ''
+        name: f_client-name-person
+        label: Client name (Person)
+        widget: string
+        required: false
+      - hint: ''
+        name: f_client-avatar
+        label: Client avatar
         widget: object
         required: false
         fields:
@@ -156,30 +210,47 @@ collections:
             widget: string
             required: false
       - hint: ''
-        name: f_services-rendered
-        label: Services Rendered
-        widget: markdown
+        name: f_quote-background
+        label: Quote background
+        widget: object
         required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
       - hint: ''
-        name: f_featured-project
-        label: Featured Project?
-        widget: boolean
+        name: f_showcase-gallery
+        label: Showcase gallery
+        widget: list
         required: false
-      - hint: ''
-        name: f_color
-        label: Color
-        widget: color
-        required: false
-        enableAlpha: true
-        allowInput: true
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
       - label: Tags
         widget: hidden
         name: tags
-        default: project
+        default: projects
       - label: Layout
         widget: hidden
         name: layout
-        default: '[project].html'
+        default: '[projects].html'
       - label: Publish Date
         name: date
         widget: datetime
@@ -274,267 +345,360 @@ collections:
             name: title
             widget: hidden
             default: Texts
-          - hint: 'Original text: Behance, key: 559c0b34'
+          - hint: 'Original text: SPURPETE., key: -568af3b2'
             label: Text
-            name: 559c0b34
+            name: '-568af3b2'
             widget: string
-          - hint: 'Original text: Instagram, key: 792b2792'
+          - hint: 'Original text: Projects, key: -37ac8366'
             label: Text
-            name: 792b2792
+            name: '-37ac8366'
             widget: string
-          - hint: 'Original text: Give your business, key: 6e09a25e'
+          - hint: 'Original text: Services, key: 560f747e'
             label: Text
-            name: 6e09a25e
+            name: 560f747e
             widget: string
-          - hint: 'Original text: an Outstanding, key: 1cee4207'
+          - hint: 'Original text: spurpete., key: 35cfc4e'
             label: Text
-            name: 1cee4207
+            name: 35cfc4e
             widget: string
-          - hint: 'Original text:  Online Presence, key: 5cf00c08'
+          - hint: 'Original text: About, key: 3c2336d'
             label: Text
-            name: 5cf00c08
+            name: 3c2336d
+            widget: string
+          - hint: 'Original text: Contact, key: -64104400'
+            label: Text
+            name: '-64104400'
+            widget: string
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: v, key: 76'
+            label: Text
+            name: '76'
             widget: string
           - hint: >-
-              Original text: SpurPete is a website design studio that
-              specialises in creating beautiful, intelligent websites. Our focus
-              is on user-focused design, so that your visitors know exactly how
-              to navigate your website. Whoever you are and whatever your
-              business, we can help you — whether it's a new brand identity or a
-              website., key: 647f27ac
+              Original text: Let's create tailored strategies for your
+              business., key: 5dd7bc44
             label: Text
-            name: 647f27ac
+            name: 5dd7bc44
+            widget: string
+          - hint: 'Original text: our work, key: -3a1489b'
+            label: Text
+            name: '-3a1489b'
+            widget: string
+          - hint: >-
+              Original text: Welcome to SpurPete, your go-to digital agency for
+              all your online needs., key: -1b4b7a98
+            label: Text
+            name: '-1b4b7a98'
+            widget: string
+          - hint: 'Original text: what we do, key: 5bebf6c1'
+            label: Text
+            name: 5bebf6c1
+            widget: string
+          - hint: >-
+              Original text: We take a data-driven approach to everything we do,
+              leveraging insights and analytics to inform our strategies and
+              optimize our efforts., key: -6ec8adea
+            label: Text
+            name: '-6ec8adea'
             widget: text
-          - hint: 'Original text: available for projects, key: 493f91e8'
+          - hint: 'Original text: More About us, key: -50d23b84'
             label: Text
-            name: 493f91e8
+            name: '-50d23b84'
             widget: string
-          - hint: 'Original text: A quick glance of our , key: 44c9a3a3'
+          - hint: 'Original text: marketing, key: -37a835da'
             label: Text
-            name: 44c9a3a3
+            name: '-37a835da'
             widget: string
-          - hint: 'Original text: Latest , key: 6071f959'
+          - hint: >-
+              Original text: Let's put you in the Marketing Radar, key:
+              -1ac9f933
             label: Text
-            name: 6071f959
+            name: '-1ac9f933'
             widget: string
-          - hint: 'Original text: Works, key: 4fe2b62'
+          - hint: >-
+              Original text: From social media marketing and search engine
+              optimization to content creation and paid advertising, we'll help
+              you reach your target audience, increase brand visibility, and
+              drive conversions. Let us unleash the power of marketing and
+              propel your business to new heights., key: -3b959039
             label: Text
-            name: 4fe2b62
+            name: '-3b959039'
+            widget: text
+          - hint: 'Original text: View our services, key: -1a0d3fd3'
+            label: Text
+            name: '-1a0d3fd3'
+            widget: string
+          - hint: 'Original text: Branding, key: 2572f1b'
+            label: Text
+            name: 2572f1b
+            widget: string
+          - hint: 'Original text: Let''s give your brand a personality., key: 66e4eef'
+            label: Text
+            name: 66e4eef
+            widget: string
+          - hint: >-
+              Original text: From logo design to brand strategy, we'll help you
+              build a brand that not only reflects your unique story but also
+              connects with your customers on a deeper level. Trust us to brand
+              your success., key: -2b48a2f8
+            label: Text
+            name: '-2b48a2f8'
+            widget: text
+          - hint: >-
+              Original text: "Their creativity, attention to detail, and
+              commitment to quality exceeded my expectations", key: -46e72034
+            label: Text
+            name: '-46e72034'
+            widget: text
+          - hint: 'Original text: Peter Paul Arasu, key: -8a69272'
+            label: Text
+            name: '-8a69272'
+            widget: string
+          - hint: 'Original text: Emilda solutions, key: bf255a2'
+            label: Text
+            name: bf255a2
+            widget: string
+          - hint: 'Original text: Let''s talk, key: -13e0cf3b'
+            label: Text
+            name: '-13e0cf3b'
+            widget: string
+          - hint: >-
+              Original text: Let's create a binge-worthy experience for your
+              brand., key: 4610d22a
+            label: Text
+            name: 4610d22a
+            widget: string
+          - hint: >-
+              Original text: Got questions on your mind? We are here to help you
+              out. Schedule a free meeting now to get enlightened., key: 2897740
+            label: Text
+            name: '2897740'
+            widget: text
+          - hint: 'Original text: Schedule a Call, key: 505b866'
+            label: Text
+            name: 505b866
+            widget: string
+          - hint: 'Original text: whatsapp, key: 73526992'
+            label: Text
+            name: '73526992'
+            widget: string
+          - hint: 'Original text: behance, key: -d9c8cac'
+            label: Text
+            name: '-d9c8cac'
+            widget: string
+          - hint: 'Original text: © 2023, key: 223d6616'
+            label: Text
+            name: 223d6616
+            widget: string
+          - hint: 'Original text: About us, key: 645f0031'
+            label: Text
+            name: 645f0031
+            widget: string
+          - hint: >-
+              Original text: We are a creative digital agency dedicated to
+              sparking innovation, igniting brands, and driving exceptional
+              results., key: 5f4af11a
+            label: Text
+            name: 5f4af11a
+            widget: text
+          - hint: 'Original text: What sets us apart?, key: -f21fda6'
+            label: Text
+            name: '-f21fda6'
+            widget: string
+          - hint: >-
+              Original text: Energy of a start-up combined with a dedicated
+              team., key: 73cff7f8
+            label: Text
+            name: 73cff7f8
+            widget: string
+          - hint: 'Original text: our story, key: -70bdecdf'
+            label: Text
+            name: '-70bdecdf'
+            widget: string
+          - hint: >-
+              Original text: Combining innovation with a result driven approach,
+              key: -454ea51d
+            label: Text
+            name: '-454ea51d'
+            widget: string
+          - hint: >-
+              Original text: When you choose SpurPete, you choose a partner
+              dedicated to your success. We invest in understanding your
+              business, your target audience, and your unique challenges. We
+              believe in building long-term relationships based on trust,
+              integrity, and shared success. Your success is our success, and we
+              are committed to being there with you every step of the way., key:
+              120d7b5
+            label: Text
+            name: 120d7b5
+            widget: text
+          - hint: 'Original text: My Services, key: 1e1d9052'
+            label: Text
+            name: 1e1d9052
+            widget: string
+          - hint: 'Original text: Let''s explore what I can do for you., key: 2604435e'
+            label: Text
+            name: 2604435e
+            widget: string
+          - hint: >-
+              Original text: We serve clients with ground breaking solutions.
+              Let's explore what we can do together to bring your brand
+              forward!, key: -1f061b0b
+            label: Text
+            name: '-1f061b0b'
+            widget: text
+          - hint: 'Original text: View my services, key: 4a75df77'
+            label: Text
+            name: 4a75df77
+            widget: string
+          - hint: 'Original text: View Live, key: 1625d987'
+            label: Text
+            name: 1625d987
+            widget: string
+          - hint: 'Original text: Scroll, key: -6cb52d13'
+            label: Text
+            name: '-6cb52d13'
+            widget: string
+          - hint: 'Original text: What I Did, key: -2fe93c34'
+            label: Text
+            name: '-2fe93c34'
+            widget: string
+          - hint: 'Original text: Client, key: 7877dfeb'
+            label: Text
+            name: 7877dfeb
+            widget: string
+          - hint: 'Original text: Role, key: 26f496'
+            label: Text
+            name: 26f496
+            widget: string
+          - hint: 'Original text: Date, key: 2063ce'
+            label: Text
+            name: 2063ce
+            widget: string
+          - hint: 'Original text: Service, key: -2683a16b'
+            label: Text
+            name: '-2683a16b'
+            widget: string
+          - hint: 'Original text: Overview, key: 23735199'
+            label: Text
+            name: '23735199'
+            widget: string
+          - hint: 'Original text: Showcase, key: -10510c33'
+            label: Text
+            name: '-10510c33'
             widget: string
           - hint: 'Original text: No items found., key: 3d503d2b'
             label: Text
             name: 3d503d2b
             widget: string
-          - hint: 'Original text: Let''s Build your Website , key: 1fd568c7'
+          - hint: 'Original text: Selected works, key: -23aeb223'
             label: Text
-            name: 1fd568c7
+            name: '-23aeb223'
             widget: string
-          - hint: 'Original text: together, key: -489b3dc6'
+          - hint: 'Original text: View all Projects, key: -568ce4c'
             label: Text
-            name: '-489b3dc6'
+            name: '-568ce4c'
             widget: string
-          - hint: >-
-              Original text: Do you want to build your website but don't know
-              where to start? Or maybe you've started, but are stuck and unsure
-              of what next step you should take? We'll build your website
-              together. Together, we can come up with a design that is best
-              suited for your business needs, style, and budget., key: -7b68e98d
+          - hint: 'Original text: Send us a message., key: -1f76b5d0'
             label: Text
-            name: '-7b68e98d'
-            widget: text
-          - hint: 'Original text: Whatsapp Us, key: -792a8014'
-            label: Text
-            name: '-792a8014'
+            name: '-1f76b5d0'
             widget: string
-          - hint: 'Original text: Mail Us, key: -6b40da59'
+          - hint: 'Original text: Please fill out the form below., key: 4fe84c31'
             label: Text
-            name: '-6b40da59'
+            name: 4fe84c31
             widget: string
-          - hint: 'Original text: Copyright © 2022 -Spurpete., key: 5c629d53'
+          - hint: 'Original text: Name, key: 24eeab'
             label: Text
-            name: 5c629d53
+            name: 24eeab
             widget: string
-          - hint: 'Original text: Protected page, key: -11c6301f'
+          - hint: 'Original text: Email, key: 3ff5b7c'
             label: Text
-            name: '-11c6301f'
+            name: 3ff5b7c
             widget: string
-          - hint: >-
-              Original text: Incorrect password. Please try again., key:
-              -f5c4b5f
+          - hint: 'Original text: Message, key: -63dc6819'
             label: Text
-            name: '-f5c4b5f'
+            name: '-63dc6819'
             widget: string
-          - hint: 'Original text: Page not found, key: 49a057c4'
+          - hint: 'Original text: Thank you!, key: 33b7d778'
             label: Text
-            name: 49a057c4
+            name: 33b7d778
+            widget: string
+          - hint: 'Original text: Your submission has been received., key: -4fec87fa'
+            label: Text
+            name: '-4fec87fa'
             widget: string
           - hint: >-
-              Original text: The page you are looking for doesn't exist or has
-              been moved., key: 583f3656
+              Original text: Oops! Something went wrong while submitting the
+              form. Try again!, key: -57742cc1
             label: Text
-            name: 583f3656
-            widget: string
-          - hint: 'Original text: Impressum, key: 6f6b7057'
-            label: Text
-            name: 6f6b7057
-            widget: string
-          - hint: 'Original text: Anschrift, key: -45932f90'
-            label: Text
-            name: '-45932f90'
-            widget: string
-          - hint: 'Original text: Bourros Rise GmbH, key: -3cae46d1'
-            label: Text
-            name: '-3cae46d1'
-            widget: string
-          - hint: 'Original text: Hohenfelderstraße 17, key: -13d6dfde'
-            label: Text
-            name: '-13d6dfde'
-            widget: string
-          - hint: 'Original text: 56068 Koblenz, key: 208b68f4'
-            label: Text
-            name: 208b68f4
-            widget: string
-          - hint: 'Original text: ‍, key: 200d'
-            label: Text
-            name: 200d
-            widget: string
-          - hint: 'Original text: Geschäftsführer, key: -25ed1f58'
-            label: Text
-            name: '-25ed1f58'
-            widget: string
-          - hint: 'Original text: Christian Schütte, key: 31b06e9a'
-            label: Text
-            name: 31b06e9a
-            widget: string
-          - hint: 'Original text: Nicolas Kayser, key: 37910346'
-            label: Text
-            name: '37910346'
-            widget: string
-          - hint: 'Original text: Kontakt, key: 43219700'
-            label: Text
-            name: '43219700'
-            widget: string
-          - hint: 'Original text: Tel.: +49 261 134903 30, key: -6b095129'
-            label: Text
-            name: '-6b095129'
-            widget: string
-          - hint: 'Original text: E-Mail: , key: -2ae9163b'
-            label: Text
-            name: '-2ae9163b'
-            widget: string
-          - hint: 'Original text: nicolas.kayser@bourros.com, key: 63661cd3'
-            label: Text
-            name: 63661cd3
-            widget: string
-          - hint: 'Original text: Registereintrag, key: -f12ddb5'
-            label: Text
-            name: '-f12ddb5'
+            name: '-57742cc1'
             widget: string
           - hint: >-
-              Original text: Sitze der Gesellschaft: 56068 Koblenz, key:
-              3606da41
+              Original text: Here is where you get to binge our projects., key:
+              1527f16a
             label: Text
-            name: 3606da41
-            widget: string
-          - hint: 'Original text: Handelregistereintrag: HRB 26099, key: 3025bb29'
-            label: Text
-            name: 3025bb29
-            widget: string
-          - hint: 'Original text: Umsatzsteuer-ID: DE316715731, key: 70fe68ed'
-            label: Text
-            name: 70fe68ed
+            name: 1527f16a
             widget: string
           - hint: >-
-              Original text: Umsatzsteuer-Identifikationsnummer gemäß §27a
-              Umsatzsteuergesetz: , key: 16127b39
+              Original text: Take a look at our past projects and decide for
+              yourself., key: 7cd48959
             label: Text
-            name: 16127b39
+            name: 7cd48959
             widget: string
           - hint: >-
-              Original text: DE276630311Verantwortlich für den Inhalt nach § 55
-              Abs. 2 RStV, key: -1b6bd9dd
+              Original text: Let's find the perfect service to drive positive
+              results., key: -bc91e21
             label: Text
-            name: '-1b6bd9dd'
-            widget: string
-          - hint: 'Original text: Haftungsausschluss, key: -6da66772'
-            label: Text
-            name: '-6da66772'
-            widget: string
-          - hint: 'Original text: Haftung für Inhalte, key: 5dc68522'
-            label: Text
-            name: 5dc68522
+            name: '-bc91e21'
             widget: string
           - hint: >-
-              Original text: Die Inhalte unserer Seiten wurden mit größter
-              Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und
-              Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
-              Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene
-              Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
-              verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter
-              jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
-              Informationen zu überwachen oder nach Umständen zu forschen, die
-              auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur
-              Entfernung oder Sperrung der Nutzung von Informationen nach den
-              allgemeinen Gesetzen bleiben hiervon unberührt. Eine
-              diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
-              Kenntnis einer konkreten Rechtsverletzung möglich. Bei
-              Bekanntwerden von entsprechenden Rechtsverletzungen werden wir
-              diese Inhalte umgehend entfernen., key: 475efff5
+              Original text: Unleash the power of digital experience with us,
+              key: 34f7678d
             label: Text
-            name: 475efff5
-            widget: text
-          - hint: 'Original text: Haftung für Links, key: 2dce875c'
-            label: Text
-            name: 2dce875c
+            name: 34f7678d
             widget: string
-          - hint: >-
-              Original text: Unser Angebot enthält Links zu externen Webseiten
-              Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb
-              können wir für diese fremden Inhalte auch keine Gewähr übernehmen.
-              Für die Inhalte der verlinkten Seiten ist stets der jeweilige
-              Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten
-              Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche
-              Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum
-              Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente
-              inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne
-              konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei
-              Bekanntwerden von Rechtsverletzungen werden wir derartige Links
-              umgehend entfernen., key: 3c51e0ac
+          - hint: 'Original text: Schedule a call, key: 5144446'
             label: Text
-            name: 3c51e0ac
-            widget: text
-          - hint: 'Original text: Urheberrecht, key: 4b028e7'
-            label: Text
-            name: 4b028e7
+            name: '5144446'
             widget: string
-          - hint: >-
-              Original text: Die durch die Seitenbetreiber erstellten Inhalte
-              und Werke auf diesen Seiten unterliegen dem deutschen
-              Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und
-              jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes
-              bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw.
-              Erstellers. Downloads und Kopien dieser Seite sind nur für den
-              privaten, nicht kommerziellen Gebrauch gestattet. Soweit die
-              Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden,
-              werden die Urheberrechte Dritter beachtet. Insbesondere werden
-              Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem
-              auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um
-              einen entsprechenden Hinweis. Bei Bekanntwerden von
-              Rechtsverletzungen werden wir derartige Inhalte umgehend
-              entfernen., key: 173e392b
+          - hint: 'Original text: Some of our skills..., key: -32bfc9e5'
             label: Text
-            name: 173e392b
-            widget: text
-          - hint: 'Original text: Angaben gemäß § 5 TMG, key: -7d17ba28'
-            label: Text
-            name: '-7d17ba28'
+            name: '-32bfc9e5'
             widget: string
-          - hint: 'Original text: Livegang / SOON, key: 32540ead'
+          - hint: 'Original text: User testing, key: 7f8812db'
             label: Text
-            name: 32540ead
+            name: 7f8812db
             widget: string
-          - hint: "Original text: Hohenfelder Str. 17 /\_56068 KOBLENZ, key: -6a1c5ea6"
+          - hint: 'Original text: Creative thinking, key: -58d0851f'
             label: Text
-            name: '-6a1c5ea6'
+            name: '-58d0851f'
+            widget: string
+          - hint: 'Original text: User interface, key: 21914744'
+            label: Text
+            name: '21914744'
+            widget: string
+          - hint: 'Original text: Typography, key: 5500514f'
+            label: Text
+            name: 5500514f
+            widget: string
+          - hint: 'Original text: Design sprints, key: 2352cd57'
+            label: Text
+            name: 2352cd57
+            widget: string
+          - hint: 'Original text: User experience, key: 6ac5c0bf'
+            label: Text
+            name: 6ac5c0bf
+            widget: string
+          - hint: 'Original text: Color theory, key: -69c7ab9e'
+            label: Text
+            name: '-69c7ab9e'
+            widget: string
+          - hint: 'Original text: Responsive design, key: 7222318a'
+            label: Text
+            name: 7222318a
             widget: string
       - label: Links
         name: links
@@ -544,50 +708,41 @@ collections:
             name: title
             widget: hidden
             default: Links
-          - hint: 'Original link: /, key: 2f'
-            label: Link
-            name: 2f
-            widget: string
           - hint: 'Original link: https://www.behance.net/spurpete, key: -2a7895ce'
             label: Link
             name: '-2a7895ce'
             widget: string
-          - hint: 'Original link: https://www.instagram.com/spur_pete/, key: 421d34d4'
+          - hint: 'Original link: /services/, key: -32173fbe'
             label: Link
-            name: 421d34d4
+            name: '-32173fbe'
+            widget: string
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /about/, key: 61642f31'
+            label: Link
+            name: 61642f31
+            widget: string
+          - hint: 'Original link: /contact/, key: 16bdc13e'
+            label: Link
+            name: 16bdc13e
+            widget: string
+          - hint: 'Original link: /projects/, key: -5bda445a'
+            label: Link
+            name: '-5bda445a'
+            widget: string
+          - hint: 'Original link: http://wa.link/qgt07t, key: -2c2fc96e'
+            label: Link
+            name: '-2c2fc96e'
             widget: string
           - hint: 'Original link: #, key: 23'
             label: Link
             name: '23'
             widget: string
-          - hint: >-
-              Original link:
-              mailto:info@nicolaskayser.com?subject=Project%20inquiry, key:
-              -638f9c56
+          - hint: 'Original link: #scroll, key: 56000b0'
             label: Link
-            name: '-638f9c56'
-            widget: string
-          - hint: 'Original link: https://wa.link/2q3xfk, key: -42b533b7'
-            label: Link
-            name: '-42b533b7'
-            widget: string
-          - hint: 'Original link: mailto:spurandpete@gmail.com, key: -657f2654'
-            label: Link
-            name: '-657f2654'
-            widget: string
-          - hint: >-
-              Original link: https://www.linkedin.com/company/spur-pete/, key:
-              -4da77680
-            label: Link
-            name: '-4da77680'
-            widget: string
-          - hint: 'Original link: mailto:nicolas.kayser@bourros.com, key: -71f09125'
-            label: Link
-            name: '-71f09125'
-            widget: string
-          - hint: 'Original link: /impressum, key: -2e8aead8'
-            label: Link
-            name: '-2e8aead8'
+            name: 56000b0
             widget: string
       - label: Images
         name: images
@@ -598,7 +753,7 @@ collections:
             widget: hidden
             default: Images
           - label: Image
-            name: 1a301464
+            name: i465597e0
             widget: object
             fields:
               - name: url
@@ -611,7 +766,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: i290d7665
+            name: i1f32c963
             widget: object
             fields:
               - name: url
@@ -624,7 +779,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: i518b7c9b
+            name: i7dbf6239
             widget: object
             fields:
               - name: url
@@ -637,7 +792,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 3313d070
+            name: i7c0a899a
             widget: object
             fields:
               - name: url
@@ -650,7 +805,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 2dcab44e
+            name: i7537271e
             widget: object
             fields:
               - name: url
@@ -663,7 +818,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-6c355196'
+            name: 50736d45
             widget: object
             fields:
               - name: url
@@ -676,7 +831,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 42b8f266
+            name: 249c1478
             widget: object
             fields:
               - name: url
@@ -689,7 +844,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-79c097'
+            name: 211c3759
             widget: object
             fields:
               - name: url
@@ -702,7 +857,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 6b41d068
+            name: 22d10ff8
             widget: object
             fields:
               - name: url
@@ -715,7 +870,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 336a0397
+            name: 27ef99d5
             widget: object
             fields:
               - name: url
@@ -728,7 +883,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 6be94059
+            name: i7a55b0fb
             widget: object
             fields:
               - name: url
@@ -741,7 +896,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-28f44e50'
+            name: 4bdb8ac1
             widget: object
             fields:
               - name: url
@@ -754,7 +909,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 429255f7
+            name: i34614736
             widget: object
             fields:
               - name: url
@@ -767,7 +922,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-137c0172'
+            name: 7fe0f498
             widget: object
             fields:
               - name: url
@@ -780,7 +935,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 36c5e456
+            name: i32f974d2
             widget: object
             fields:
               - name: url
@@ -793,7 +948,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-362dea8a'
+            name: i1cb94cd0
             widget: object
             fields:
               - name: url
@@ -806,7 +961,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-443bf8f1'
+            name: 418fb19b
             widget: object
             fields:
               - name: url
@@ -819,7 +974,111 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-2b1beb3c'
+            name: 676c1e2d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-12f9526a'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1614092c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 52661b4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 175825c3
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 162220ad
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-12e87bd1'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-21dcea65'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-66905f4c'
             widget: object
             fields:
               - name: url
